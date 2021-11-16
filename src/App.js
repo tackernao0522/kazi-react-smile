@@ -7,9 +7,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Learn name="Mango" weight="20gm" />
-        <Learn name="Orange" weight="120gm" />
-        <Learn name="Apple" weight="50gm" />
+        <Learning />
       </header>
     </div>
 
