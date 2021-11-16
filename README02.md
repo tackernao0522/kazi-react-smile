@@ -49,3 +49,40 @@ function App() {
 
 export default App;
 ```
+
+## Class Components(クラスコンポーネント）
+
++ `src/components/Learning.jsx`コンポーネントを作成<br>
+
+```
+import React, { Component } from "react";
+
+class Learning extends Component {
+    render() {
+        return <h1>Hello Udemy</h1>
+    }
+}
+
+export default Learning
+```
+
++ `App.js`を編集<br>
+
+```
+import './App.css';
+import Learn from './components/Hello'
+import Learning from './components/Learning';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Learn />
+        <Learning />
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
