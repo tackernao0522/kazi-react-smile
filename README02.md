@@ -86,3 +86,29 @@ function App() {
 
 export default App;
 ```
+
+## JSX
+
+`App.js`を編集<br>
+
+```
+import './App.css';
+import logo from './logo.svg';
+import Learn from './components/Hello'
+import Learning from './components/Learning';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>Hello</p>
+        <Learn />
+        <Learning />
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
