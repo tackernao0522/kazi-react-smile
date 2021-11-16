@@ -112,3 +112,39 @@ function App() {
 
 export default App;
 ```
+
+## Props
+
++ `App.js`を編集<br>
+
+```
+import './App.css';
+import logo from './logo.svg';
+import Learn from './components/Hello'
+import Learning from './components/Learning';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Learn name="Mango" weight="20gm" />
+        <Learn name="Orange" weight="120gm" />
+        <Learn name="Apple" weight="50gm" />
+      </header>
+    </div>
+
+  );
+}
+
+export default App;
+```
+
++ `src/components/Hello.jsx`を編集<br>
+
+```
+function Hello(props) {
+    return <h1>I love {props.name} and weight is {props.weight}</h1>
+}
+
+export default Hello;
+```
