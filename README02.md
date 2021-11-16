@@ -148,3 +148,84 @@ function Hello(props) {
 
 export default Hello;
 ```
+
+## State
+
++ `App.js`を編集<br>
+
+```
+import './App.css';
+import logo from './logo.svg';
+import Learn from './components/Hello'
+import Learning from './components/Learning';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Learning />
+      </header>
+    </div>
+
+  );
+}
+
+export default App;
+```
+
++ `src/components/Learning.jsx`を編集<br>
+
+```
+import React, { Component } from "react";
+
+class Learning extends Component {
+    state = {
+        fruits: [
+            {name: 'Mango', weight: '120gm'},
+            {name: 'Apple', weight: '20gm'},
+            {name: 'Orange', weight: '60gm'},
+        ]
+    }
+    render() {
+        return (
+            <div>
+                <h1>Fruit name is {this.state.fruits[0].name}</h1>
+                <h1>Fruit name is {this.state.fruits[1].name}</h1>
+                <h1>Fruit name is {this.state.fruits[2].name}</h1>
+            </div>
+        )
+    }
+}
+
+export default Learning
+```
+
++ `src/components/Learning.jsx`を再編集<br>
+
+```
+import React, { Component } from "react";
+
+class Learning extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            fruits: [
+                {name: 'Mango', weight: '120gm'},
+                {name: 'Apple', weight: '20gm'},
+                {name: 'Orange', weight: '60gm'},
+            ]
+        }
+    }
+        render() {
+        return (
+            <div>
+                <h1>Fruit name is {this.state.fruits[0].name}</h1>
+                <h1>Fruit name is {this.state.fruits[1].name}</h1>
+                <h1>Fruit name is {this.state.fruits[2].name}</h1>
+            </div>
+        )
+    }
+}
+
+export default Learning
+```
