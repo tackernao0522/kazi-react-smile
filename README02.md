@@ -313,3 +313,55 @@ class Learning extends Component {
 
 export default Learning
 ```
+
+## UseState Hook(関数コンポーネントで使用)
+
++ `src/components/Hook.jsx`コンポーネントを作成<br>
+
+```
+import React, { useState } from 'react'
+
+const Hook = (props) => {
+    const [fruitState, setFruiteState] = useState({
+        fruits: [
+            { name: 'Mango', weight: '120gm' },
+            { name: 'Apple', weight: '20gm' },
+            { name: 'Orange', weight: '60gm' },
+        ],
+    })
+    return (
+        <div>
+            <button>Change Me</button>
+            <h1>Fruit name is {fruitState.fruits[0].name}</h1>
+            <h1>Fruit name is {fruitState.fruits[1].name}</h1>
+            <h1>Fruit name is {fruitState.fruits[2].name}</h1>
+        </div>
+    )
+}
+
+export default Hook
+```
+
++ `App.js`を編集<br>
+
+```
+import './App.css';
+// import logo from './logo.svg';
+// import Learn from './components/Hello'
+// import Learning from './components/Learning';
+import Hook from './components/Hook';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Hook />
+      </header>
+    </div>
+
+  );
+}
+
+export default App;
+```
+
