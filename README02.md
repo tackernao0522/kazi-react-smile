@@ -365,3 +365,143 @@ function App() {
 export default App;
 ```
 
+## 変更時のデータバインディング
+
++ `src/components/Check.jsx`コンポーネントを作成<br>
+
+```
+import { Component } from "react";
+
+class Check extends Component {
+    render() {
+        return (
+            <div>
+                <h1>Hello Easy Learning</h1>
+            </div>
+        )
+    }
+}
+
+export default Check
+```
+
++ `App.js`を編集<br>
+
+```
+import './App.css';
+import Check from './components/Check';
+// import logo from './logo.svg';
+// import Learn from './components/Hello'
+// import Learning from './components/Learning';
+// import Hook from './components/Hook';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Check />
+      </header>
+    </div>
+
+  );
+}
+
+export default App;
+```
+
++ `src/components/Check.jsx`を編集(一つ目の方法)<br>
+
+```
+import { Component } from "react";
+
+class Check extends Component {
+    constructor (props) {
+        super(props);
+        this.state = {
+            men: [
+                {name: 'Kazi Ariyan'}
+            ]
+        }
+    }
+    render() {
+        return (
+            <div>
+                <input type="text" />
+                <h1>Hello {this.state.men[0].name}</h1>
+            </div>
+        )
+    }
+}
+
+export default Check
+```
+
++ `src/components/Check.jsx`を編集(二つ目の方法)<br>
+
+```
+import { Component } from "react";
+
+class Check extends Component {
+    // constructor (props) {
+    //     super(props);
+    //     this.state = {
+    //         men: [
+    //             {name: 'Kazi Ariyan'}
+    //         ]
+    //     }
+    // }
+
+    state = {
+        name: 'Kazi Ariyan New'
+    }
+
+    render() {
+        return (
+            <div>
+                <input type="text" />
+                <h1>Hello {this.state.name}</h1>
+            </div>
+        )
+    }
+}
+
+export default Check
+```
+
++ `src/components/Check.jsx`を編集<br>
+
+```
+import { Component } from "react";
+
+class Check extends Component {
+    // constructor (props) {
+    //     super(props);
+    //     this.state = {
+    //         men: [
+    //             {name: 'Kazi Ariyan'}
+    //         ]
+    //     }
+    // }
+
+    state = {
+        name: 'Kazi Ariyan New'
+    }
+
+    changeName = (event) => {
+        this.setState({
+            name: event.target.value
+        })
+    }
+
+    render() {
+        return (
+            <div>
+                <input type="text" onChange={this.changeName} value={this.state.name} />
+                <h1>Hello {this.state.name}</h1>
+            </div>
+        )
+    }
+}
+
+export default Check
+```
