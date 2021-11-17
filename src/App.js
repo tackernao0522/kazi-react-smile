@@ -11,12 +11,17 @@ class App extends React.Component {
     this.setState({ [val]: myValue }); // value set on the state
   }
 
+  formSubmit = (event) => {
+    event.preventDefault(); // リロードされないようにする
+    console.log(this.state.username);
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Hello {this.state.username}</h1>
         <div>
-          <form>
+          <form onSubmit={this.formSubmit}>
             <div class="form-group" style={{ marginLeft: 200 }}>
               <label>User Name:</label>
               <br />
