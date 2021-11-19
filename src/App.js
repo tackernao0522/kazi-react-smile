@@ -2,37 +2,28 @@ import React from "react";
 
 class App extends React.Component {
   state = {
-    username: "",
-    phonenumber: "",
     email: "",
-    city: ""
+    password: "",
   }
 
-  ChangeData = (e) => {
-    let val = e.target.name; // Username, phonenumber, email (e.target.nameのnameはname属性)
-    let myValue = e.target.value // Gettin value (name属性の値)
-    this.setState({ [val]: myValue }); // value set on the state (name="myValue")
+  formSumbit = (e) => {
+    e.preventDefault();
+    console.log(this.state.email, this.state.password);
   }
 
   render() {
     return (
       <div className="App">
-        <h1>{ this.state.username}</h1>
-        <h1>{ this.state.phonenumber}</h1>
         <h1>{ this.state.email}</h1>
-        <h1>{ this.state.city}</h1>
+        <h1>{ this.state.password}</h1>
         <div>
-          <form>
+          <form onSubmit={this.formSumbit}>
             <div class="form-group" style={{ marginLeft: 200 }}>
               <label>User Name:</label>
               <br />
-              <input type="text" name="username" onChange={this.ChangeData}></input>
+              <input type="email" name="email" onChange={(event) => {this.setState({email: event.target.value})}}></input>
               <br />
-              <input type="text" name="phonenumber" onChange={this.ChangeData}></input>
-              <br />
-              <input type="text" name="email" onChange={this.ChangeData}></input>
-              <br />
-              <input type="text" name="city" onChange={this.ChangeData}></input>
+              <input type="passoword" name="password" onChange={(event) => {this.setState({password: event.target.value})}}></input>
               <br />
               <button type="submit">Submit</button>
             </div>
