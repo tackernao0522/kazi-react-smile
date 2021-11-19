@@ -9,10 +9,12 @@ class App extends React.Component {
   }
 
   validate() {
-    if () {
-
-    } else if () {
-
+    if (!this.state.email > 0 && !this.state.password > 0) {
+      this.setState({ emailError: "Email and Password Required" });
+    } else if (!this.state.email > 0) {
+      this.setState({ emailError: "Email Required" });
+    } else if (!this.state.password > 0) {
+      this.setState({ passwordError: "Password Required" });
     } else {
       return true;
     }
@@ -36,13 +38,13 @@ class App extends React.Component {
               <br />
               <input type="email" name="email" onChange={(event) => { this.setState({ email: event.target.value }) }}></input>
               <br />
-              <strong style={{ color: 'red' }}>Email and Password Invalid</strong>
+              <strong style={{ color: 'red' }}>{this.state.emailError}</strong>
               <br />
               <label>Password:</label>
               <br />
               <input type="passoword" name="password" onChange={(event) => { this.setState({ password: event.target.value }) }}></input>
               <br />
-              <strong style={{ color: 'red' }}>Email and Password Invalid</strong>
+              <strong style={{ color: 'red' }}>{this.state.passwordError}</strong>
               <br />
               <button type="submit">Submit</button>
             </div>
