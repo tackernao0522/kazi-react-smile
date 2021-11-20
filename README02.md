@@ -1373,3 +1373,19 @@ class App extends React.Component {
 
 export default App;
 ```
+
+## React Router DOM
+
++ `$ npm install react-router-dom@5.2.0`を実行<br>
+
++ `src/components`ディレクトリ内のファイルを一旦全て削除<br>
+
++ `src/components/About.jsx`コンポーネントを作成<br>
+
++ `src/components/Blog.jsx`コンポーネントを作成<br>
+
++ `src/components/Contact.jsx`コンポーネントを作成<br>
+
++ `src/components/Profile.jsx`コンポーネントを作成<br>
+
+
