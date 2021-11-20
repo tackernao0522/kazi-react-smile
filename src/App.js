@@ -3,28 +3,11 @@ import React from "react";
 class App extends React.Component {
   state = {
     email: "",
-    password: "",
-    emailError: '',
-    passwordError: ''
-  }
-
-  validate() {
-    if (!this.state.email > 0 && !this.state.password > 0) {
-      this.setState({ emailError: "Email and Password Required" });
-    } else if (!this.state.email > 0) {
-      this.setState({ emailError: "Email Required" });
-    } else if (!this.state.password > 0) {
-      this.setState({ passwordError: "Password Required" });
-    } else {
-      return true;
-    }
+    details: ""
   }
 
   formSumbit = (e) => {
     e.preventDefault();
-    if (this.validate()) {
-      alert("Form Submit Done");
-    }
   }
 
   render() {
@@ -38,13 +21,10 @@ class App extends React.Component {
               <br />
               <input type="email" name="email" onChange={(event) => { this.setState({ email: event.target.value }) }}></input>
               <br />
-              <strong style={{ color: 'red' }}>{this.state.emailError}</strong>
+              <label>Details:</label>
               <br />
-              <label>Password:</label>
-              <br />
-              <input type="passoword" name="password" onChange={(event) => { this.setState({ password: event.target.value }) }}></input>
-              <br />
-              <strong style={{ color: 'red' }}>{this.state.passwordError}</strong>
+              <textarea onChange={(event)=>{this.setState({details: event.target.value})}}>Write on Here</textarea>
+              <h6>{this.state.details}</h6>
               <br />
               <button type="submit">Submit</button>
             </div>
