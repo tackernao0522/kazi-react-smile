@@ -1388,4 +1388,216 @@ export default App;
 
 + `src/components/Profile.jsx`コンポーネントを作成<br>
 
+## Router Link Load Component
 
++ `src/Header.jsx`コンポーネントを作成<br>
+
+```
+import { Component } from 'react'
+import { Nav, Navbar } from 'react-bootstrap'
+
+export default class Header extends Component {
+  render() {
+    return (
+      <div>
+        <Navbar bg="light" expand="lg">
+          <Navbar.Brand href="#home">Easy Learning</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              <Nav.Link href="#home">About Us</Nav.Link>
+              <Nav.Link href="#link">Contact Us</Nav.Link>
+              <Nav.Link href="#link">Blog</Nav.Link>
+              <Nav.Link href="#link">Profile</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+      </div>
+    )
+  }
+}
+```
+
++ `src/index.js`を編集<br>
+
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import Header from './Header';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Header />
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+```
+
++ `App.js`を編集<br>
+
+```
+import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+class App extends React.Component {
+
+  render() {
+    return (
+      <div className="App">
+        <h1>This is our Home Component</h1>
+      </div>
+    )
+  }
+}
+
+export default App;
+```
+
++ `src/Header.jsx`を編集<br>
+
+```
+import { Component } from 'react'
+import { Nav, Navbar } from 'react-bootstrap'
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
+import App from './App'
+import About from './components/About'
+import Blog from './components/Blog'
+import Contact from './components/Contact'
+import Profile from './components/Profile'
+
+export default class Header extends Component {
+  render() {
+    return (
+      <Router>
+        <div>
+          <Navbar bg="light" expand="lg">
+            <Navbar.Brand><Link to="/">Easy Learning</Link></Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="mr-auto">
+                <Nav.Link><Link to="/about">About Us</Link></Nav.Link>
+                <Nav.Link><Link to="/contact">Contact Us</Link></Nav.Link>
+                <Nav.Link><Link to="/blog">Blog</Link></Nav.Link>
+                <Nav.Link><Link to="/profile">Profile</Link></Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
+        </div>
+
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/contact">
+            <Contact />
+          </Route>
+          <Route path="/blog">
+            <Blog />
+          </Route>
+          <Route path="/profile">
+            <Profile />
+          </Route>
+          <Route path="/">
+            <App />
+          </Route>
+        </Switch>
+      </Router>
+    )
+  }
+}
+```
+
++ `src/components/About.jsx`を編集<br>
+
+```
+import { Component } from 'react'
+
+export default class About extends Component {
+  render() {
+    return (
+      <div>
+        <h1>This is About Component</h1>
+      </div>
+    )
+  }
+}
+```
+
++ `src/components/Blog.jsx`を編集<br>
+
+```
+import { Component } from 'react'
+
+export default class Blog extends Component {
+  render() {
+    return (
+      <div>
+        <h1>This is Blog Component</h1>
+      </div>
+    )
+  }
+}
+```
+
++ `src/components/Contact.jsx`を編集<br>
+
+```
+import { Component } from 'react'
+
+export default class Contact extends Component {
+  render() {
+    return (
+      <div>
+        <h1>This is Contact Component</h1>
+      </div>
+    )
+  }
+}
+```
+
++ `src/components/Contact.jsx`を編集<br>
+
+```
+import { Component } from 'react'
+
+export default class Profile extends Component {
+  render() {
+    return (
+      <div>
+        <h1>This is Profile Component</h1>
+      </div>
+    )
+  }
+}
+```
+
++ `src/index.js`を編集<br>
+
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import reportWebVitals from './reportWebVitals';
+import Header from './Header';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Header />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+```
