@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-class App extends React.Component {
+export const App = () => {
+  const [count, incCount] = useState(0);
 
-  render() {
-    return (
-      <div className="App">
-        <h1>This is our Home Component</h1>
-      </div>
-    )
-  }
+  const onClickCountUp = () => incCount(count + 1)
+
+  return (
+    <div>
+      <h1>Clicking Me {count}</h1>
+      <button onClick={onClickCountUp}>Click Me</button>
+    </div>
+  )
 }
 
 export default App;
