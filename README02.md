@@ -1651,3 +1651,125 @@ export default class Blog extends Component {
   }
 }
 ```
+
+## Link Load Component
+
++ `src/components/Blog.jsx`を編集<br>
+
+```
+import axios from 'axios'
+import { Component } from 'react'
+import { Link } from 'react-router-dom'
+
+export default class Blog extends Component {
+  state = {
+    posts: [],
+  }
+
+  componentDidMount() {
+    axios
+      .get('https://jsonplaceholder.typicode.com/posts')
+      .then((response) => {
+        this.setState({ posts: response.data })
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
+  render() {
+    const posts = this.state.posts
+    const allPosts = posts.map((post, idx) => (
+      <div>
+        <a href="" key={idx}>{post.title}</a>
+        <br />
+        <p>{post.body}</p>
+      </div>
+    ))
+
+    return (
+      <div>
+        <h1>This is Blog Component</h1>
+          <Link to="/writePost">Add New</Link>
+        <div class="media">
+          <div class="media-body text-center">{allPosts}</div>
+        </div>
+      </div>
+    )
+  }
+}
+```
+
++ `src/compoents/WritePost.jsx`コンポーネントを作成<br>
+
+```
+import { Component } from 'react'
+
+export default class WritePost extends Component {
+  render() {
+    return (
+      <div>
+        <h1>This is Write Post Component</h1>
+      </div>
+    )
+  }
+}
+```
+
++ `src/Header.jsx`を編集<br>
+
+```
+import { Component } from 'react'
+import { Nav, Navbar } from 'react-bootstrap'
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
+import App from './App'
+import About from './components/About'
+import Blog from './components/Blog'
+import Contact from './components/Contact'
+import Profile from './components/Profile'
+import WritePost from './components/WritePost'
+
+export default class Header extends Component {
+  render() {
+    return (
+      <Router>
+        <div>
+          <Navbar bg="light" expand="lg">
+            <Navbar.Brand><Link to="/">Easy Learning</Link></Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="mr-auto">
+                <Nav.Link><Link to="/about">About Us</Link></Nav.Link>
+                <Nav.Link><Link to="/contact">Contact Us</Link></Nav.Link>
+                <Nav.Link><Link to="/blog">Blog</Link></Nav.Link>
+                <Nav.Link><Link to="/profile">Profile</Link></Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
+        </div>
+
+        <Switch>
+          <Route path="/writePost">
+            <WritePost />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/contact">
+            <Contact />
+          </Route>
+          <Route path="/blog">
+            <Blog />
+          </Route>
+          <Route path="/profile">
+            <Profile />
+          </Route>
+          <Route path="/">
+            <App />
+          </Route>
+        </Switch>
+      </Router>
+    )
+  }
+}
+```

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class Blog extends Component {
   state = {
@@ -30,6 +31,7 @@ export default class Blog extends Component {
     return (
       <div>
         <h1>This is Blog Component</h1>
+          <Link to="/writePost">Add New</Link>
         <div class="media">
           <div class="media-body text-center">{allPosts}</div>
         </div>
