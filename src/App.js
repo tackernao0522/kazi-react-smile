@@ -1,17 +1,23 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export const App = () => {
-  const [count, incCount] = useState(0);
+class App extends Component {
+  state = {
+    count: 0
+  }
 
-  const onClickCountUp = () => incCount(count + 1)
+  onlickCountUp = () => [
+    this.setState({count: this.state.count + 1})
+  ]
 
-  return (
-    <div>
-      <h1>Clicking Me {count}</h1>
-      <button onClick={onClickCountUp}>Click Me</button>
-    </div>
-  )
+  render() {
+    return (
+      <div>
+        <h1>Clicking Me {this.state.count}</h1>
+        <button onClick={ this.onlickCountUp }>Click Me</button>
+      </div>
+    )
+  }
 }
 
 export default App;
