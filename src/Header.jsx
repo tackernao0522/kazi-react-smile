@@ -6,6 +6,7 @@ import About from './components/About'
 import Blog from './components/Blog'
 import Contact from './components/Contact'
 import Profile from './components/Profile'
+import WritePost from './components/WritePost'
 
 export default class Header extends Component {
   render() {
@@ -27,6 +28,9 @@ export default class Header extends Component {
         </div>
 
         <Switch>
+          <Route path="/writePost">
+            <WritePost />
+          </Route>
           <Route path="/about">
             <About />
           </Route>
